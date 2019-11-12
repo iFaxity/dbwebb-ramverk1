@@ -1,0 +1,148 @@
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/form';
+@import 'layout/movie';
+
+main {
+  min-height: 500px;
+
+  &.has-sidebar {
+    &-right {
+      display: grid;
+      grid-template-columns: auto 250px;
+      grid-gap: 1em;
+    }
+
+    &-left {
+      display: grid;
+      grid-template-columns: 250px auto;
+      grid-gap: 1em;
+
+      &.has-sidebar-right {
+        grid-template-columns: 250px auto 250px;
+      }
+    }
+
+    @media screen and (max-width: 720px) {
+
+      &-right,
+      &-left {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+.region-sidebar {
+  position: sticky;
+  top: 1em;
+
+  .wrapper {
+    position: sticky;
+    top: 1em;
+  }
+
+  h4 {
+    background: $primary;
+    color: $primaryText;
+    padding: 0.2em 1em;
+  }
+}
+
+.breadcrumb-list {
+  ul {
+    // Required to remove the ghost spacing between li elements
+    display: flex;
+  }
+
+  li {
+    display: inline;
+
+    &::after {
+      content: ">";
+      margin: 0 0.5em;
+    }
+  }
+}
+
+.next-previous {
+  display: flex;
+
+  .previous {
+    flex: 1;
+    text-align: left;
+    order: 1;
+  }
+
+  .next {
+    flex: 1;
+    text-align: right;
+    order: 2;
+  }
+}
+
+/**
+ * Dice styles
+ */
+
+.dice {
+  width: 3em;
+  height: 3em;
+  margin: 0 0.5em;
+  color: rgba(255, 0, 0, 0.8);
+  background: #fff;
+}
+
+.players {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin-bottom: 2em;
+
+  // responsive when 720px
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Message */
+.message {
+  color: #fff;
+  background: #000;
+  margin: 1.5em 1em 1.5em;
+  padding: 0.8em 1em;
+  border: 2px solid #000;
+  font-size: 1em;
+  border-radius: 0.3em;
+
+  header {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+
+  &.info {
+    color: #276f86;
+    background: #f8ffff;
+    border-color: #a9d5de;
+  }
+
+  &.ok {
+    color: #2c662d;
+    background: #fcfff5;
+    border-color: #a3c293;
+  }
+
+  &.warning {
+    color: #573a08;
+    background: #fffaf3;
+    border-color: #c9ba9b;
+  }
+
+  &.error {
+    color: #9f3a38;
+    background: #fff6f6;
+    border-color: #e0b4b4;
+  }
+}

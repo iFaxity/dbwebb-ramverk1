@@ -1,0 +1,47 @@
+footer {
+  top: 0;
+  width: 100%;
+  background: $primary;
+  color: $primaryText;
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, .5);
+  padding: 1em 2em;
+
+  a[href] {
+    color: $primaryText;
+
+    &:visited {
+      color: $secondary;
+    }
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+
+    .column {
+      padding: 1em 0.5em;
+      margin: 0 0.5em;
+
+      &:not(:last-of-type) {
+        border-right: 1px solid $primaryText;
+      }
+    }
+
+    // responsive when 720px
+    @media screen and (max-width: 720px) {
+      grid-template-columns: 1fr;
+
+      .column {
+        border-bottom: 1px solid $primaryText;
+        border-right: none !important;
+        margin: 0;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

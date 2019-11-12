@@ -1,0 +1,17 @@
+/*!
+ * Default theme for website.
+ */
+@import 'normalize.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+
+// Variables
+$primary: #37474f;
+$primaryText: #fff;
+$secondary: #d81b60;
+$secondaryText: #fff;
+$background: #dae3e7;
+$maxContentWidth: 1500px;
+
+// Import theme files
+@import 'base';
+@import 'layout';

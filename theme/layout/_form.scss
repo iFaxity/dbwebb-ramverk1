@@ -1,0 +1,115 @@
+/*
+  Material like button
+*/
+button,
+a.button {
+  color: $secondary;
+  border: none;
+  outline: none;
+  padding: 0.6em 1.5em;
+  margin: 0.3em 0.5em;
+  border-radius: 0.2em;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:disabled {
+    color: #888;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba($secondary, 0.2);
+  }
+
+  &.solid {
+    color: $secondaryText;
+    background: $secondary;
+    box-shadow: 0 0.2em 0.4em 0 rgba(0, 0, 0, 0.4);
+
+    &:disabled {
+      background: #888;
+    }
+
+    &:hover:not(:disabled) {
+      background: darken($secondary, 10%);
+      box-shadow: 0 0.4em 0.4em 0 rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+
+/*
+  Material like textfield
+*/
+.textfield {
+  position: relative;
+  margin: 0.3em 0;
+  min-width: 100px;
+  width: 100%;
+  max-width: 400px;
+  color: #405863;
+  height: 3.25em;
+
+  &.fluid {
+    max-width: 100%;
+  }
+
+  label {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    opacity: 0.5;
+    font-weight: 500;
+    transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+    will-change: transform, opacity, color;
+    transform-origin: top left;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  input {
+    background: #e6e6e6;
+    font-size: 1em;
+    padding: 1.5em 1em 0.5em;
+    width: 100%;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+    border: none;
+    border-bottom: 0.1em solid #8ea3ac;
+    border-radius: 0.2em;
+    outline: none;
+    box-sizing: border-box;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 0.8;
+    }
+    &:focus {
+      border-color: $secondary;
+      opacity: 1;
+    }
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
+      color: $secondary;
+      transform: translateY(-60%) scale(0.9);
+      opacity: 1;
+    }
+
+    // Add required sign to label
+    &:required + label::after {
+      content: '*';
+    }
+
+    // Remove spinbox on number fields (works for Firefox and Chrome)
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &[type=number] {
+      -moz-appearance:textfield;
+    }
+  }
+}
