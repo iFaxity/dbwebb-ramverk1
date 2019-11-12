@@ -13,12 +13,12 @@ class Controller implements ContainerInjectableInterface
     use ContainerInjectableTrait;
 
     private const TEST_ADDRS = [
-        "2001:db8::1",// => true,
-        "2a03:2880:f00a:8:face:b00c:0:2",// => true,
-        "1200::ABYX:1234::2552:7777:1313",// => false,
-        "194.47.150.9",// => true,
-        "192.168.1.20",// => true,
-        "83.230.116.044",// => false,
+        "2001:db8::1",
+        "2a03:2880:f00a:8:face:b00c:0:2",
+        "1200::ABYX:1234::2552:7777:1313",
+        "194.47.150.9",
+        "192.168.1.20",
+        "83.230.116.044",
     ];
 
     private $examples;
