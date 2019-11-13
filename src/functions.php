@@ -4,10 +4,7 @@
  * Alias to htmlentities, escapes a string to prevent XSS injection
  * @return string escaped string.
  */
-function esc($str) : string
+function esc(?string $str) : string
 {
-    if (is_null($str)) {
-        return "";
-    }
-    return htmlentities($str);
+    return is_null($str) ? "" : htmlentities($str);
 }

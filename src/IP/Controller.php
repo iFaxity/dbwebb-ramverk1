@@ -24,6 +24,12 @@ class Controller implements ContainerInjectableInterface
     private $examples;
 
 
+    /**
+     * Validate IP address and get info about the domain
+     * @param string|null $ip
+     *
+     * @return array
+     */
     private function validateIP(?string $ip) : object
     {
         $data = (object)[];
@@ -40,6 +46,9 @@ class Controller implements ContainerInjectableInterface
     }
 
 
+    /**
+     * Initializer for the class
+     */
     public function initialize()
     {
         $this->examples = (object) [];
@@ -58,7 +67,7 @@ class Controller implements ContainerInjectableInterface
 
 
     /**
-     * This is the index method action, it handles:
+     * Handles / for the controller
      *
      * @return object
      */

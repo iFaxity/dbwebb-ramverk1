@@ -12,6 +12,12 @@ class APIController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /**
+     * Validate IP address and get info about the domain
+     * @param string|null $ip
+     *
+     * @return array
+     */
     private function validateIP(?string $ip) : array
     {
         $status = 200;
@@ -34,7 +40,7 @@ class APIController implements ContainerInjectableInterface
 
 
     /**
-     * This is the index method action, it handles:
+     * Handles / for the controller
      *
      * @return array
      */
