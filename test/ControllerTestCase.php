@@ -33,8 +33,8 @@ class ControllerTestCase extends TestCase
         $di->loadServices(ANAX_INSTALL_PATH . "/config/di");
         $di->cache->setPath(ANAX_INSTALL_PATH . "/cache/test");
 
-        $class_ctor = $this->className;
-        $this->controller = new $class_ctor();
+        $classCtor = $this->className;
+        $this->controller = new $classCtor();
         $this->controller->setDI($di);
         $this->di = $di;
 
