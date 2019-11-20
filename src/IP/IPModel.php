@@ -77,15 +77,22 @@ class IPModel
             "location" => null,
         ];
 
-        if (filter_var($ip, FILTER_VALIDATE_IP)) {
+        // Check which protocol the address uses
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+            $data->type = "ipv4";
+            $data->valid = true;
+        } else if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            $data->type = "ipv6";
+            $data->valid = true;
+        }
+
+        if ($data->valid) {
             $host = gethostbyaddr($ip);
             $res = $this->requestJSON(self::IPSTACK_URL . "/$ip", [
                 "access_key" => self::IPSTACK_ACCESS_KEY,
             ]);
 
             $data->ip = $ip;
-            $data->valid = true;
-            $data->type = $res->type;
             $data->domain = $host != $ip ? $host : null;
             $data->region = $res->region_name;
             $data->country = $res->country_name;
