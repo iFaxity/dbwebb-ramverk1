@@ -28,11 +28,11 @@
 <p>
     Där &lt;ip&gt; är IP addressen som skall verifieras.
     Om parametern glöms eller är tom så skickas en respons med statusen 400 och kan se ut såhär:
-    <pre><code><?= $examples->err ?></code></pre>
+    <pre><code><?= esc($examples->err) ?></code></pre>
 </p>
 <p>
     Annars skickas en respons med statusen 200 och kan se ut såhär:
-    <pre><code><?= $examples->ok ?></code></pre>
+    <pre><code><?= esc($examples->ok) ?></code></pre>
 </p>
 <ul>
     <li>

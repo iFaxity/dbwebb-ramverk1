@@ -7,7 +7,9 @@
         </span>
     </h3>
 
-    <p>Protokolltypen är <?= $type ?>.</p>
+    <?php if (!is_null($type)) : ?>
+        <p>Protokolltypen är <?= $type ?>.</p>
+    <?php endif; ?>
 
     <?php if (!is_null($domain)) : ?>
         <p>Domännamnet är <?= $domain ?>.</p>
