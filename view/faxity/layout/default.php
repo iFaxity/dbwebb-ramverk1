@@ -45,12 +45,6 @@ if ($request->hasGet("regions")) {
     $htmlClass[] = "regions";
 }
 
-// Get flash message if any and add to region flash-message
-$flashMessage = $session->getOnce("flashmessage");
-if ($flashMessage) {
-    $di->get("view")->add(__DIR__ . "/../flashmessage/default", ["message" => $flashMessage], "flash-message");
-}
-
 
 // Get current route to make as body class
 // If route is not empty string
