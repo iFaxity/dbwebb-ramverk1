@@ -1,10 +1,15 @@
 /*!
  * Default theme for website.
  */
-@import 'normalize.scss';
-@import '@fortawesome/fontawesome-free/scss/solid.scss';
+$fa-font-path: '../webfonts';
 
-// Variables
+@import 'normalize-scss/sass/normalize';
+@import '@fortawesome/fontawesome-free/scss/variables';
+@import '@fortawesome/fontawesome-free/scss/mixins';
+@import '@fortawesome/fontawesome-free/scss/core';
+@import '@fortawesome/fontawesome-free/scss/solid';
+
+// Theme variables
 $primary: #37474f;
 $primaryText: #fff;
 $secondary: #d81b60;
