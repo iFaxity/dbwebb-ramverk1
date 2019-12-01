@@ -25,5 +25,15 @@ return [
             "mount" => "ip",
             "handler" => "\Faxity\IP\Controller",
         ],
+        [
+            "info" => "",
+            "mount" => "weather-api",
+            "handler" => "\Faxity\Weather\APIController",
+        ],
+        [
+            "info" => "",
+            "mount" => "weather",
+            "handler" => "\Faxity\Weather\Controller",
+        ],
     ],
 ];

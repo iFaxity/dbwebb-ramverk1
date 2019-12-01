@@ -67,6 +67,18 @@ return [
             "title" => "Validera IP addresser.",
         ],
         [
+            "text" => "Väder",
+            "url" => "weather",
+            "title" => "Visa väderprognoser.",
+            "submenu" => [
+                [
+                    "text" => "API",
+                    "url" => "weather/docs",
+                    "title" => "Om väder APIet.",
+                ]
+            ],
+        ],
+        [
             "text" => "Verktyg",
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
