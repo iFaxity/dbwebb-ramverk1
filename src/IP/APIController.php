@@ -12,20 +12,6 @@ class APIController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-    /**
-     * @var IPModel $ip IPModel class
-     */
-    private $ip;
-
-
-    /**
-     * Initializer for the class
-     */
-    public function initialize()
-    {
-        $this->ip = new IPModel();
-    }
-
 
     /**
      * Handles / for the controller
@@ -35,7 +21,7 @@ class APIController implements ContainerInjectableInterface
     public function indexActionPost() : array
     {
         $ip = $this->di->request->getPost("ip");
-        $res = $this->ip->validate($ip);
+        $res = $this->di->ip->validate($ip);
 
         if (is_null($res)) {
             $json = [ "message" => "Ingen IP address skickades." ];

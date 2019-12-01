@@ -2,10 +2,12 @@
 
 namespace Faxity\IP;
 
+use Test\ControllerTestCase;
+
 /**
  * Test the IPv6 Controller.
  */
-class ControllerTest extends \Test\ControllerTestCase
+class ControllerTest extends ControllerTestCase
 {
     protected $className = Controller::class;
 
@@ -30,7 +32,7 @@ class ControllerTest extends \Test\ControllerTestCase
     {
         $this->di->request->setGet("ip", "1200::AB00:1234::2552:7777:1313");
         $res = $this->controller->indexActionGet();
-        $this->assertInstanceOf("\Anax\Response\Response", $res);
+        $this->assertInstanceOf(\Anax\Response\Response::class, $res);
 
         $body = $res->getBody();
         $this->assertContains("ogiltig", $body);
@@ -44,7 +46,7 @@ class ControllerTest extends \Test\ControllerTestCase
     {
         $this->di->request->setGet("ip", "2001:db8::aaaa:0:0:1");
         $res = $this->controller->indexActionGet();
-        $this->assertInstanceOf("\Anax\Response\Response", $res);
+        $this->assertInstanceOf(\Anax\Response\Response::class, $res);
 
         $body = $res->getBody();
         $this->assertContains("giltig", $body);

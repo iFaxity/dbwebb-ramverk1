@@ -2,10 +2,12 @@
 
 namespace Faxity\IP;
 
+use Test\ControllerTestCase;
+
 /**
  * Test the IPv6 Controller.
  */
-class APIControllerTest extends \Test\ControllerTestCase
+class APIControllerTest extends ControllerTestCase
 {
     protected $className = APIController::class;
 

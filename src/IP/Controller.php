@@ -12,6 +12,7 @@ class Controller implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /** List of IP addresses to have available as test */
     private const TEST_ADDRS = [
         "2001:db8::1",
         "2a03:2880:f00a:8:face:b00c:0:2",
@@ -21,13 +22,29 @@ class Controller implements ContainerInjectableInterface
         "83.230.116.044",
     ];
 
+    /** API response example for a failed response */
+    private const API_EXAMPLE_ERR = [
+        "message" => "Ingen IP address skickades.",
+    ];
+
+    /** API response example for a successfull response */
+    private const API_EXAMPLE_OK = [
+        "ip" => "194.47.150.9",
+        "valid" => true,
+        "domain" => "dbwebb.se",
+        "type" => "ipv4",
+        "region" => "Blekinge",
+        "country" => "Sweden",
+        "location" => [
+            "latitude"  => 56.16122055053711,
+            "longitude" => 15.586899757385254,
+        ],
+    ];
 
     /**
      * @var object $examples API response examples
-     * @var IPModel $ip IPModel class
      */
     private $examples;
-    private $ip;
 
 
     /**
@@ -35,26 +52,10 @@ class Controller implements ContainerInjectableInterface
      */
     public function initialize()
     {
-        $this->ip = new IPModel();
-        $this->examples = (object) [];
-
-        // Create example responses
-        $this->examples->err = esc(json_encode([
-            "message" => "Ingen IP address skickades.",
-        ], JSON_PRETTY_PRINT));
-
-        $this->examples->ok = esc(json_encode([
-            "ip" => "194.47.150.9",
-            "valid" => true,
-            "domain" => "dbwebb.se",
-            "type" => "ipv4",
-            "region" => "Blekinge",
-            "country" => "Sweden",
-            "location" => [
-                "latitude"  => 56.16122055053711,
-                "longitude" => 15.586899757385254,
-            ],
-        ], JSON_PRETTY_PRINT));
+        $this->examples = (object) [
+            "err" => json_encode(self::API_EXAMPLE_ERR, JSON_PRETTY_PRINT),
+            "ok" => json_encode(self::API_EXAMPLE_OK, JSON_PRETTY_PRINT),
+        ];
     }
 
 
@@ -69,10 +70,10 @@ class Controller implements ContainerInjectableInterface
         $ip = $this->di->request->getGet("ip");
 
         if (empty($ip)) {
-            $ip = $this->ip->getAddress();
+            $ip = $this->di->ip->getAddress();
         }
 
-        $res = (array) $this->ip->validate($ip);
+        $res = (array) $this->di->ip->validate($ip);
 
         $this->di->page->add("ip/index", $res);
         $this->di->page->add("ip/api", [
