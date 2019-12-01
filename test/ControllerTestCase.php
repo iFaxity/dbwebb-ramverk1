@@ -14,7 +14,7 @@ class ControllerTestCase extends TestCase
     /**
      * @var $controller Anax Controller class
      * @var $di Dependency injector
-     * @var $dclassName Controller class name
+     * @var $className Controller class name
      */
     protected $controller;
     protected $di;
