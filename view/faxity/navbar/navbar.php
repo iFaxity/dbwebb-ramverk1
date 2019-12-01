@@ -13,17 +13,5 @@ $navbar = new \Faxity\Navbar\Navbar();
 $navbar->setDI($di);
 $html = $navbar->createMenuWithSubMenus($navbarConfig);
 
-//$classes = "rm-navbar " . ( $class ?? null);
-
-/*
-<!-- menu wrapper -->
-<div <?= classList($classes) ?>>
-    <!-- main menu -->
-    <?= $html ?>
-</div>
-*/
-
-?>
-
-<!-- main menu -->
-<?= $html ?>
+// Render the menu
+echo $html;
