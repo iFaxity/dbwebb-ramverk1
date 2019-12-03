@@ -14,26 +14,5 @@ return [
 
     // Load routes in order, start with these and the those found in
     // router/*.php.
-    "routes" => [
-        [
-            "info" => "",
-            "mount" => "ip-api",
-            "handler" => "\Faxity\IP\APIController",
-        ],
-        [
-            "info" => "",
-            "mount" => "ip",
-            "handler" => "\Faxity\IP\Controller",
-        ],
-        [
-            "info" => "",
-            "mount" => "weather-api",
-            "handler" => "\Faxity\Weather\APIController",
-        ],
-        [
-            "info" => "",
-            "mount" => "weather",
-            "handler" => "\Faxity\Weather\Controller",
-        ],
-    ],
+    "routes" => [],
 ];
