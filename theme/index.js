@@ -12,9 +12,10 @@ const cssnano = require('cssnano');
 const postcss = require('postcss');
 const writeFile = promisify(fs.writeFile);
 
-const THEME_DIR = `${__dirname}/theme`;
+const THEME_DIR = __dirname;
+const ANAX_DIR = path.join(__dirname, '../');
 const INPUT = `${THEME_DIR}/theme.scss`;
-const OUTPUT = `${__dirname}/htdocs/css/theme.min.css`;
+const OUTPUT = `${ANAX_DIR}/htdocs/css/theme.min.css`;
 const POSTCSS_PLUGINS = [ autoprefixer, cssnano ];
 const POSTCSS_OPTS = {
   from: INPUT,
@@ -23,7 +24,7 @@ const POSTCSS_OPTS = {
 };
 const SASS_OPTS = {
   file: INPUT,
-  includePaths: [ `${__dirname}/node_modules` ],
+  includePaths: [ `${ANAX_DIR}/node_modules` ],
 };
 
 

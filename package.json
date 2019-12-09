@@ -4,8 +4,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watch": "node ./theme.js watch",
-    "build": "node ./theme.js build"
+    "watch": "node ./theme watch",
+    "build": "node ./theme build"
   },
   "browserslist": [
     "last 2 version"
