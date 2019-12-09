@@ -9,20 +9,17 @@ namespace Anax\View;
 
 // Show incoming variables and view helper functions
 //echo showEnvironment(get_defined_vars(), get_defined_functions());
+$defaultTemplate = "anax/v2/block/default";
 ?>
 
 <div class="columns">
     <?php foreach ($columns as $column) :
-        $template = isset($column["template"])
-            ? $column["template"]
-            : __DIR__ . "/../block/default";
+        $template = $column["template"] ?? $defaultTemplate;
+        $data = $column["data"] ?? $column;
         ?>
 
     <div class="column">
-        <?php
-        $data = isset($column["data"]) ? $column["data"] : $column;
-        renderView($template, $data);
-        ?>
+        <?php renderView($template, $data) ?>
     </div>
 
     <?php endforeach; ?>

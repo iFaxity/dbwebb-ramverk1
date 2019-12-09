@@ -9,5 +9,5 @@ namespace Anax\View;
 $navbar = new \Faxity\Navbar\Navbar();
 $navbar->setDI($di);
 
-echo "<span class=\"menu-icon\"></span>";
+// Render the menu
 echo $navbar->createMenuWithSubMenus($navbarConfig);

@@ -29,34 +29,32 @@ return [
     // These views are always loaded into the collection of views.
     "views" => [
         [
-            "region" => "header-logo",
-            "template" => "faxity/header/logo",
+            "region"   => "header-logo",
+            "template" => "faxity/navbar/logo",
             "data" => [
                 "homeLink" => "",
                 "logoText" => "ramverk1",
-                "logo"     => "image/theme/leaf_40x40.png",
-                "logoAlt"  => "Löv-bild",
             ],
         ],
         [
-            "region" => "header",
-            "template" => "faxity/navbar/navbar",
+            "region"   => "header",
+            "template" => "faxity/navbar/header",
             "data" => [
-                "navbarConfig" => require __DIR__ . "/navbar/header.php",
+                "navbarConfig" => require __DIR__ . "/navbar.php",
             ],
         ],
         [
-            "region" => "header-mobile",
+            "region"   => "header-mobile",
             "template" => "faxity/navbar/responsive",
             "data" => [
-                "navbarConfig" => require __DIR__ . "/navbar/header.php",
+                "navbarConfig" => require __DIR__ . "/navbar.php",
             ],
         ],
         [
-            "region" => "footer",
+            "region"   => "footer",
             "template" => "faxity/columns/default",
             "data" => [
-                "class"  => "footer-column",
+                "class"   => "footer-column",
                 "columns" => [
                     [
                         "template" => "anax/v2/block/default",
@@ -71,10 +69,10 @@ return [
             "sort" => 1,
         ],
         [
-            "region" => "footer",
+            "region"   => "footer",
             "template" => "anax/v2/block/default",
             "data" => [
-                "class"  => "site-footer",
+                "class"        => "site-footer",
                 "contentRoute" => "block/footer",
             ],
             "sort" => 2,
