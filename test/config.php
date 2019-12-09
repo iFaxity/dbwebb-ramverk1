@@ -10,7 +10,7 @@
  */
 define("ANAX_INSTALL_PATH", realpath(__DIR__ . "/.."));
 
-
+define("TEST_INSTALL_PATH", __DIR__);
 
 /**
  * Include autoloader.
