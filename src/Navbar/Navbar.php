@@ -16,19 +16,6 @@ class Navbar
 
 
     /**
-     * Create an url.
-     *
-     * @param: string $url where to create the url.
-     *
-     * @return string as the url create.
-     */
-    public function url($url)
-    {
-        return $this->di->url->create($url);
-    }
-
-
-    /**
      * Callback tracing the current selected menu item base on scriptname.
      *
      * @param: string $url to check for.
@@ -47,12 +34,8 @@ class Navbar
      * @param array $config with configuration for the menu.
      *
      * @return string with html for the menu.
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function createMenuWithSubMenus($config)
+    public function createMenuWithSubMenus(array $config)
     {
         $default = [
             "id"      => null,
@@ -60,12 +43,9 @@ class Navbar
             "wrapper" => "nav",
         ];
         $menu = array_replace_recursive($default, $config);
+        $class = isset($menu["class"]) ? " class=\"{$menu["class"]}\"" : null;
 
         // Call the anonomous function to create the menu, and submenues if any.
-        $class = isset($menu["class"])
-            ? " class=\"{$menu["class"]}\""
-            : null;
-
         list($html) = $this->createMenu($menu["items"], $class);
 
         return "\n{$html}\n";
@@ -73,17 +53,18 @@ class Navbar
 
 
     /**
-     * Create a navigation bar/menu, with submenus.
+     * Create a navigation bar/menu.
      *
-     * @param array $config with configuration for the menu.
+     * @param array $items Menu items.
+     * @param string|null $ulClass Optiona class to append on it's ul element.
      *
-     * @return string with html for the menu.
+     * @return array with html for the menu.
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function createMenu($items, $ulClass = null)
+    public function createMenu(array $items, ?string $ulClass = null)
     {
         $html = null;
         $hasItemIsSelected = false;
@@ -91,43 +72,34 @@ class Navbar
 
         foreach ($items as $item) {
             // has submenu, call recursivly and keep track on if the submenu has a selected item in it.
-            $subMenu        = null;
-            $selectedParent = null;
-            $subMenuIcon    = null;
+            $subMenu        = "";
+            $selectedParent = "";
+            $subMenuIcon    = "";
             $selected = $this->check($item["url"]);
             $classes = [];
             $class = "";
 
             if (isset($item["submenu"])) {
-                list($subMenu, $selectedParent) = $this->createMenu($item["submenu"], null, $subMenuClass);
+                list($subMenu, $selectedParent) = $this->createMenu($item["submenu"], $subMenuClass);
                 $subMenuIcon = "<span class=\"submenu-icon\"></span>";
 
-                if ($subMenu) {
-                    $classes[] = "has-submenu";
-                }
-
-                if ($selectedParent) {
-                    $classes[] = "selected-parent";
-                }
+                $subMenu && $classes[] = "has-submenu";
+                $selectedParent && $classes[] = "selected-parent";
             }
 
             if ($selected) {
+                // Remember there is selected children when going up the menu hierarchy
+                $hasItemIsSelected = true;
                 $classes[] = "selected";
             }
 
             if (!empty($classes)) {
-                $class = implode(" ", $classes);
-                $class = " class=\"{$class}\" ";
+                $class = " class=\"" . implode(" ", $classes) ."\" ";
             }
 
             // Add the menu item
-            $url = $this->url($item["url"]);
-            $html .= "\n<li{$class}><a href='{$url}' title='{$item['title']}'>{$item['text']}</a>{$subMenuIcon}{$subMenu}</li>\n";
-
-            // To remember there is selected children when going up the menu hierarchy
-            if ($selected) {
-                $hasItemIsSelected = true;
-            }
+            $url = $this->di->url->create($item["url"]);
+            $html .= "\n<li{$class}><a href=\"{$url}\" title=\"{$item['title']}\">{$item['text']}</a>{$subMenuIcon}{$subMenu}</li>\n";
         }
 
         // Return the menu
