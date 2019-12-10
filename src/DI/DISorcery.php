@@ -131,7 +131,7 @@ class DISorcery extends DIFactoryConfig implements ContainerInterface
     /**
      * Constructs class instance, loads sources from file if available.
      * @param string      $appRoot     Anax app root directory
-     * @param string|null $sourcesRoot (optional) Directory to load relative source paths
+     * @param string|null $sourcesRoot (optional) Directory to load relative source paths, defaults to "$appRoot/vendor"
      *
      * @return DISorcery
      */
