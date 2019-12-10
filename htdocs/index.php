@@ -14,7 +14,7 @@ require ANAX_INSTALL_PATH . '/vendor/autoload.php';
 
 // Add all framework services to $di
 $di = new \Faxity\DI\DISorcery(ANAX_INSTALL_PATH);
-$di->initialize('config/sources.php');
+$di->initialize('config/sorcery.php');
 
 // Send the response that the router returns from the route handler
 $method = $di->request->getMethod();
