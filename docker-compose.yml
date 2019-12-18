@@ -1,16 +1,19 @@
-version: "3"
+version: '3'
 services:
     cli:
         image: anax/dev:cli
-        volumes: [ ".:/home/anax/repo" ]
+        volumes:
+          - .:/home/anax/repo
     web:
         image: anax/dev:apache
-        volumes: [ ".:/home/anax/repo" ]
-        ports: [ "10090:80" ]
+        volumes:
+          - .:/home/anax/repo
+        ports:
+          - 10090:80
     server:
         build: ./
         ports:
-          - '8080:80'
+          - 8080:80
         #dns:
         #  - 8.8.8.8
         #  - 8.8.4.4
@@ -22,3 +25,4 @@ services:
           - ./test:/home/anax/repo/test
           - ./theme:/home/anax/repo/theme
           - ./view:/home/anax/repo/view
+          - ./data:/home/anax/repo/data
