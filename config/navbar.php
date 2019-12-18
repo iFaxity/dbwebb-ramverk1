@@ -79,6 +79,23 @@ return [
             ],
         ],
         [
+            "text" => "Library",
+            "url" => "library",
+            "title" => "Library landing page.",
+            "submenu" => [
+                [
+                    "text" => "Add",
+                    "url" => "library/add",
+                    "title" => "Adda a new book to the library.",
+                ],
+                [
+                    "text" => "Delete",
+                    "url" => "library/delete",
+                    "title" => "Delete a book from the library.",
+                ],
+            ],
+        ],
+        [
             "text" => "Verktyg",
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",

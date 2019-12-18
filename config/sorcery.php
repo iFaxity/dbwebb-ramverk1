@@ -9,6 +9,7 @@ return [
     "anax/configure",
     "anax/content",
     "anax/database",
+    "anax/database-query-builder",
     "anax/page",
     "anax/request",
     "anax/response",
