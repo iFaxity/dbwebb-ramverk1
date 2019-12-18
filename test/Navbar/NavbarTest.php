@@ -2,7 +2,6 @@
 
 namespace Faxity\Navbar;
 
-use Anax\DI\DIFactoryConfig;
 use Anax\DI\DIMagic;
 use PHPUnit\Framework\TestCase;
 
