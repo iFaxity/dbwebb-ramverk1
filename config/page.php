@@ -21,7 +21,7 @@ return [
                 "css/theme.min.css",
             ],
             "javascripts" => [
-                "js/main.js",
+                "js/navbar.js",
             ],
         ],
     ],

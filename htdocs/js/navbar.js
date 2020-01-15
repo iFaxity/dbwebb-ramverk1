@@ -1,5 +1,5 @@
 /**
- * To show off JS works and can be integrated.
+ * Script for navbar functionality
  */
 (function () {
   'use strict';
@@ -21,4 +21,12 @@
       $parent.classList.toggle('open');
     }
   }, false);
+
+  document.addEventListener('click', e => {
+    const { target } = e;
+
+    if (!$nav.contains(target)) {
+      $nav.classList.remove('open');
+    }
+  });
 })();

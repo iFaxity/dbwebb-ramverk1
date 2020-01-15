@@ -6,12 +6,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Faxity\\": "src/",
-            "Test\\": "test/"
+            "Faxity\\": "src/"
         }
     },
     "require": {
         "anax/anax-ramverk1-me": "^1.0.0",
+        "faxity/anax-layout": "^1.0.0",
+        "faxity/di-sorcery": "^1.0.0",
         "faxity/ramverk1-module": "^1.0.0",
         "anax/htmlform": "^2.0",
         "anax/database-active-record": "^2.0"

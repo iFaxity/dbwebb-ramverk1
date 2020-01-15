@@ -4,6 +4,7 @@
  * Configuration file for Anax sources, all non absolute paths are vendor scoped.
  */
 return [
+    "faxity/anax-layout",
     "faxity/ramverk1-module",
     "anax/cache",
     "anax/configure",
